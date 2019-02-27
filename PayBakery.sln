@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation Layer", "1.Presentation Layer", "{176E346B-9F90-4912-968D-FAAD15EAD4F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Business Layer", "2.Business Layer", "{76C349E9-1807-43CB-BE51-BE2822E7A18F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Proxy Layer", "3.Proxy Layer", "{25F280C2-4607-4863-AC68-ACA059EA9C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayBakery.Web", "PayBakery.Web\PayBakery.Web.csproj", "{2A22C1CF-434A-46BD-9C2A-2ED0A854226C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayBakery.Domain", "PayBakery.Domain\PayBakery.Domain.csproj", "{50A90FE3-46E1-4BF4-8B24-C9EFF6C9C663}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayBakery.Proxy", "PayBakery.Proxy\PayBakery.Proxy.csproj", "{4C20C734-A118-46A9-927E-D3B3E79A2933}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A22C1CF-434A-46BD-9C2A-2ED0A854226C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A22C1CF-434A-46BD-9C2A-2ED0A854226C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A22C1CF-434A-46BD-9C2A-2ED0A854226C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A22C1CF-434A-46BD-9C2A-2ED0A854226C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50A90FE3-46E1-4BF4-8B24-C9EFF6C9C663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A90FE3-46E1-4BF4-8B24-C9EFF6C9C663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A90FE3-46E1-4BF4-8B24-C9EFF6C9C663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A90FE3-46E1-4BF4-8B24-C9EFF6C9C663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C20C734-A118-46A9-927E-D3B3E79A2933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C20C734-A118-46A9-927E-D3B3E79A2933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C20C734-A118-46A9-927E-D3B3E79A2933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C20C734-A118-46A9-927E-D3B3E79A2933}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2A22C1CF-434A-46BD-9C2A-2ED0A854226C} = {176E346B-9F90-4912-968D-FAAD15EAD4F7}
+		{50A90FE3-46E1-4BF4-8B24-C9EFF6C9C663} = {76C349E9-1807-43CB-BE51-BE2822E7A18F}
+		{4C20C734-A118-46A9-927E-D3B3E79A2933} = {25F280C2-4607-4863-AC68-ACA059EA9C08}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA558212-50A4-471C-99BA-140578D0E76C}
+	EndGlobalSection
+EndGlobal

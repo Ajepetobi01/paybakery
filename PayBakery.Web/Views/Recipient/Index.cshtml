@@ -1,0 +1,167 @@
+﻿@using PayBakery.Proxy.Model
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<RecipentListData>
+
+<div class="row">
+    <div>
+        <br />
+
+        <button class="button button-glow button-rounded button-action-flat hvr-float-shadow" data-toggle="modal" data-target="#form_modal" data-modalcolor="#66ccff">
+            Add Recipent
+        </button>
+
+    </div>
+    <div class="col-lg-12">
+
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-align-justify"></i> Recipients
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table horizontal_table table-striped" id="table1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Account Number</th>
+                          
+                            <th>Job</th>
+                            <th>Bank Name</th>
+                            <th></th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+
+                            var i = 0;
+                            foreach (var item in Model)
+                            {
+                                i = i + 1;
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@item.name</td>
+                                    <td>@item.details.account_number</td>
+                                    <td>@item.metadata.job</td>
+                                    <td>@item.details.bank_name</td>
+                                    <td>
+                              
+                                    @Html.ActionLink("Send Money", "SendMoney","Recipient", new { recipientcode = item.recipient_code, accountnumber = item.details.account_number, bankname = item.details.bank_name, bankcode = item.details.bank_code, name = item.name})
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="form_modal" class="modal fade animated" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Recipent</h4>
+                </div>
+                <form role="form" method="post" enctype="multipart/form-data" asp-controller="Recipient" asp-action="AddRecipient" >
+                    <div class="modal-body">
+                        <div class="row m-t-10">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label class="sr-only" for="name">Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Name" class="form-control m-t-10">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label class="sr-only" for="accnumber">Account Number</label>
+                                    <input type="number" name="account_number" id="accnumber" onblur="ResolveAccount(this.value);"
+                                           placeholder="Account Number" class="form-control m-t-10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-md-6">
+                                @Html.DropDownList("bank_code", new SelectList(ViewBag.BANKS, "code", "name", new { @class = "form-control select2", @style="width=100%" }))
+                              
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label class="sr-only" for="last-name">Account Name</label>
+                                    <input type="text" name="accname" id="accname" placeholder="Account Name" class="form-control m-t-10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-10">
+
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <label class="sr-only" for="last-name">Supplier's Job</label>
+                                    <input type="text" name="job" id="accname" placeholder="Job" class="form-control m-t-10">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script>
+    function ResolveAccount(accountno) {
+
+        var applicationBaseUrl = "http://localhost:64249"
+        var url = applicationBaseUrl + '/Home/ResolveAccount';
+
+
+        var bnk_code = $('#bank_code').val();
+        var data = { accnumber: accountno, bnk_code: bnk_code }
+
+        var Promise = Post(url, data, 'POST');
+
+        Promise.done(function (resp) {
+            console.log(resp);
+            document.getElementById('accname').value = resp;
+        });
+        Promise.fail(function (resp) {
+
+        });
+    }
+
+    function Post(url, data, type) {
+        //ShowLoading();
+
+        var promise =
+            $.ajax({
+                type: type,
+                url: url,
+                data: data
+            });
+        //HideLoading();
+        return promise;
+    }
+</script>

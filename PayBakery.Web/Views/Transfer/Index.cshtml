@@ -1,0 +1,60 @@
+﻿@using PayBakery.Proxy.Model
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<TransferListData>
+<div class="row">
+    <div>
+        <br />
+
+    </div>
+    <div class="col-lg-12">
+
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-align-justify"></i> All Transactions
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table horizontal_table table-striped" id="table1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Bank Name</th>
+                            <th>Account Number</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+
+                            var i = 0;
+                            foreach (var item in Model)
+                            {
+                                i = i + 1;
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.recipient[0].details[0].account_name</td>
+                            <td>@item.recipient[0].details[0].bank_name</td>
+                            <td>@item.recipient[0].details[0].account_number</td>
+                            <td>@item.status</td>
+                            <td>@item.amount</td>
+                        </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+

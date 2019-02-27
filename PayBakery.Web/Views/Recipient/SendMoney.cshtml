@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewData["Title"] = "SendMoney";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PayBakery.Web.Models.SendMoneyViewModel
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel ">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-fw ti-user"></i> Send Money
+                </h3>
+                <span class="pull-right hidden-xs">
+                    <i class="fa fa-fw ti-angle-up clickable"></i>
+                    <i class="fa fa-fw ti-close removepanel clickable"></i>
+                </span>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" asp-controller="Transfer" asp-action="InitiateTransfer" >
+                    <div class="form-body">
+                        <div class="form-group">
+
+                            <input type="hidden" value="@Model.recipientcode" asp-for="recipientcode" name="recipientcode" />
+                            <label for="inputUsername2" class="col-md-3 control-label">
+                                Name
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fw ti-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" asp-for="name" id="Name" placeholder="Name" value="@Model.name" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">
+                                Bank
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa ti-email"></i>
+                                    </span>
+                                    <input type="text" placeholder="Bank" asp-for="bankname" class="form-control" value="@Model.bankname" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="keypassword" class="col-md-3 control-label">
+                                Account Number
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fw ti-key"></i>
+                                    </span>
+                                    <input type="number" placeholder="Account Number" asp-for="accountnumber" id="AccountNumber" class="form-control" value="@Model.accountnumber" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputnumber2" class="col-md-3 control-label">
+                                Account Name
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fw ti-mobile"></i>
+                                    </span>
+                                    <input type="text" id="AccountName" placeholder="Account Name" asp-for="accountname" class="form-control" value="@Model.accountname" readonly />
+
+                                </div>
+                                *please verify account name
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2" class="col-md-3 control-label">
+                                Balance
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fw ti-pencil"></i>
+                                    </span>
+                                    <input type="number" class="form-control" placeholder="Balance" asp-for="balance" id="Balance" value="@Model.balance" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2" class="col-md-3 control-label">
+                                Amount
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-fw ti-pencil"></i>
+                                    </span>
+                                    <input type="number" class="form-control" asp-for="amount"  placeholder="Amount" id="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputContent2"  class="col-md-3 control-label">Reason</label>
+                            <div class="col-md-9">
+                                <textarea id="reason" asp-for="reason" rows="3" class="form-control resize_vertical"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit"  class="btn btn-primary">
+                                    Submit
+                                </button>
+                               
+                                &nbsp;
+                                <button type="reset" class="btn btn-default bttn_reset">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-﻿using Maverick.Utils.HTTP;
+﻿
 using Microsoft.Extensions.Configuration;
 using PayBakery.Proxy.Model;
 using PayBakery.Proxy.Request;

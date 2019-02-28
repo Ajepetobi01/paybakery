@@ -8,7 +8,7 @@ namespace PayBakery.Proxy.Model
     {
         public double integration { get; set; }
 
-        public List<TransferListrecipent> recipient { get; set; }
+        public TransferListrecipent recipient { get; set; }
 
         public string domain { get; set; }
 

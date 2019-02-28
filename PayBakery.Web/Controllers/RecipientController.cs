@@ -84,6 +84,15 @@ namespace PayBakery.Web.Controllers
             //Get user account name for final verification
             var result1 = _bankAccount.ResolveBankAccount(accountnumber, bankcode);
             var result2 = _bankAccount.GetPaystackBalance();
+            var message = result1.Result.Result.message;
+            if (result1.Result.Result.data == null)
+            {
+                TempData["notification"] = message;
+                TempData["notifytype"] = NotificationType.error;
+
+                return RedirectToAction("Index");
+            }
+
 
             var accountname = result1.Result.Result.data.account_name;
             var balance = result2.Result.Result.data[0].balance;

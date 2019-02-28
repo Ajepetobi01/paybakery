@@ -30,6 +30,8 @@ namespace PayBakery.Proxy
             return result;
         }
 
+
+        //add new recipient to recipient list
         public async Task<NewRecipientResponseModel> PostNewRecipient(CreateRecipientRequestModel createrecipient)
         {
             string url = $"{_configuration["PaystackEndPoints:CreateTransferRecipents"]}";

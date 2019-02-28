@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PayBakery.Domain.Core.Interfaces;
 using PayBakery.Web.Models;
+using static PayBakery.Web.Enum.Notify;
 
 namespace PayBakery.Web.Controllers
 {
@@ -81,6 +82,13 @@ namespace PayBakery.Web.Controllers
             {
 
                var  result = _bankAccount.ResolveBankAccount(accnumber, bnk_code);
+                var message = result.Result.Result.message;
+                if (result.Result.Result.data == null)
+                {
+                 
+
+                    return accountname;
+                }
 
                 accountname = result.Result.Result.data.account_name;
 

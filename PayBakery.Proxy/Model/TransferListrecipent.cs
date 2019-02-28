@@ -14,7 +14,7 @@ namespace PayBakery.Proxy.Model
 
         public string name { get; set; }
 
-        public List<TransferListdetails> details { get; set; }
+        public TransferListdetails details { get; set; }
 
         public string description { get; set; }
 

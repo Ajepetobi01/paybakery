@@ -40,9 +40,9 @@
                                 i = i + 1;
                         <tr>
                             <td>@i</td>
-                            <td>@item.recipient[0].details[0].account_name</td>
-                            <td>@item.recipient[0].details[0].bank_name</td>
-                            <td>@item.recipient[0].details[0].account_number</td>
+                            <td>@item.recipient.name</td>
+                            <td>@item.recipient.details.bank_name</td>
+                            <td>@item.recipient.details.account_number</td>
                             <td>@item.status</td>
                             <td>@item.amount</td>
                         </tr>

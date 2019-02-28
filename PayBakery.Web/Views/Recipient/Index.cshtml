@@ -32,8 +32,6 @@
                             <th>S/N</th>
                             <th>Name</th>
                             <th>Account Number</th>
-                          
-                            <th>Job</th>
                             <th>Bank Name</th>
                             <th></th>
 
@@ -52,7 +50,6 @@
                                     <td>@i</td>
                                     <td>@item.name</td>
                                     <td>@item.details.account_number</td>
-                                    <td>@item.metadata.job</td>
                                     <td>@item.details.bank_name</td>
                                     <td>
                               
@@ -82,7 +79,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <label class="sr-only" for="name">Name</label>
-                                    <input type="text" name="name" id="name" placeholder="Name" class="form-control m-t-10">
+                                    <input type="text" name="name" id="name" placeholder="Name" class="form-control m-t-10" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -101,7 +98,8 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <label class="sr-only" for="last-name">Account Name</label>
-                                    <input type="text" name="accname" id="accname" placeholder="Account Name" class="form-control m-t-10">
+                                    <input type="text" name="accname" id="accname" placeholder="Account Name" class="form-control m-t-10" readonly>
+                                    <text style="display:none" id="acctmessage" width="10px" height="8px">*Account number not correct. Please check and try again</text> 
                                 </div>
                             </div>
                         </div>
@@ -110,15 +108,14 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <label class="sr-only" for="last-name">Supplier's Job</label>
-                                    <input type="text" name="job" id="accname" placeholder="Job" class="form-control m-t-10">
+                                    <input type="text" name="job" id="accname" placeholder="Job" class="form-control m-t-10" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                    
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="submit" id="submitbutton" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             Close
                         </button>
@@ -132,6 +129,14 @@
 
 </div>
 <script>
+
+    $(document).ready(function () {
+        document.getElementById("submitbutton").disabled = true;
+      
+        //document.getElementById("acctmessage").style.display = none;
+
+        });
+   
     function ResolveAccount(accountno) {
 
         var applicationBaseUrl = "http://paybakery-1.herokuapp.com"
@@ -145,7 +150,14 @@
 
         Promise.done(function (resp) {
             console.log(resp);
-            document.getElementById('accname').value = resp;
+            if (resp != "") {
+                document.getElementById('accname').value = resp;
+                document.getElementById("submitbutton").disabled = false;
+            } else {
+                document.getElementById("acctmessage").style.display = "block";
+            }
+            
+            
         });
         Promise.fail(function (resp) {
 

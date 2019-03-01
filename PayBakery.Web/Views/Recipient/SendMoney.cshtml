@@ -41,7 +41,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <i class="fa ti-email"></i>
+                                        <i class="fa ti-credit-card"></i>
                                     </span>
                                     <input type="text" placeholder="Bank" asp-for="bankname" class="form-control" value="@Model.bankname" readonly/>
                                 </div>
@@ -54,7 +54,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <i class="fa fa-fw ti-key"></i>
+                                        <i class="fa fa-fw ti-ink-pen"></i>
                                     </span>
                                     <input type="number" placeholder="Account Number" asp-for="accountnumber" id="AccountNumber" class="form-control" value="@Model.accountnumber" readonly/>
                                 </div>
@@ -67,7 +67,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <i class="fa fa-fw ti-mobile"></i>
+                                        <i class="fa fa-fw ti-pencil"></i>
                                     </span>
                                     <input type="text" id="AccountName" placeholder="Account Name" asp-for="accountname" class="form-control" value="@Model.accountname" readonly />
 
@@ -82,7 +82,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <i class="fa fa-fw ti-pencil"></i>
+                                        <i class="fa fa-fw ti-money"></i>
                                     </span>
                                     <input type="number" class="form-control" placeholder="Balance" asp-for="balance" id="Balance" value="@Model.balance" readonly>
                                 </div>
@@ -95,16 +95,16 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <i class="fa fa-fw ti-pencil"></i>
+                                        <i class="fa fa-fw ti-money"></i>
                                     </span>
-                                    <input type="number" class="form-control" asp-for="amount"  placeholder="Amount" id="Amount">
+                                    <input type="number" class="form-control" asp-for="amount"  placeholder="Amount" id="Amount" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputContent2"  class="col-md-3 control-label">Reason</label>
                             <div class="col-md-9">
-                                <textarea id="reason" asp-for="reason" rows="3" class="form-control resize_vertical"></textarea>
+                                <textarea id="reason" asp-for="reason" rows="3" class="form-control resize_vertical" required></textarea>
                             </div>
                         </div>
                     </div>

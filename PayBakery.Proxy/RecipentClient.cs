@@ -25,7 +25,7 @@ namespace PayBakery.Proxy
         public async Task<RecipentListResponseModel> GetAllRecipents()
         {
 
-            string url = $"{_configuration["PaystackEndPoints:ListTransferRecipents"]}";
+            string url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + $"{_configuration["PaystackEndPoints:ListTransferRecipents"]}";
             var result = await _requestClient.GetRequestAsync<RecipentListResponseModel>(url);
             return result;
         }
@@ -34,7 +34,7 @@ namespace PayBakery.Proxy
         //add new recipient to recipient list
         public async Task<NewRecipientResponseModel> PostNewRecipient(CreateRecipientRequestModel createrecipient)
         {
-            string url = $"{_configuration["PaystackEndPoints:CreateTransferRecipents"]}";
+            string url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + $"{_configuration["PaystackEndPoints:CreateTransferRecipents"]}";
             var result = await _requestClient.PostRequestAsync<CreateRecipientRequestModel, NewRecipientResponseModel>(url, createrecipient);
             return result;
         }

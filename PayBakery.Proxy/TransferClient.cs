@@ -25,7 +25,7 @@ namespace PayBakery.Proxy
         //This method returns all transactions from the paystack account
         public async Task<TransferListResponseModel> GetAllTransfers()
         {
-            string url = $"{_configuration["PaystackEndPoints:ListTransfer"]}";
+            string url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + $"{_configuration["PaystackEndPoints:ListTransfer"]}";
             var result = await _requestClient.GetRequestAsync<TransferListResponseModel>(url);
             return result;
 
@@ -35,7 +35,7 @@ namespace PayBakery.Proxy
         public async Task<InitiateTransferResponseModel> InitiateTransfer(InitiateTransferRequestModel initiateTransferRequest )
         {
 
-            string url = $"{_configuration["PaystackEndPoints:InitiateTransfer"]}";
+            string url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + $"{_configuration["PaystackEndPoints:InitiateTransfer"]}";
             var result = await _requestClient.PostRequestAsync<InitiateTransferRequestModel, InitiateTransferResponseModel>(url, initiateTransferRequest);
             return result;
         }

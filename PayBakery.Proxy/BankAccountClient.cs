@@ -28,7 +28,7 @@ namespace PayBakery.Proxy
 
             
            //pass url to get user paystack balance
-            string url = $"{_configuration["PaystackEndPoints:Balance"]}"; 
+            string url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + $"{_configuration["PaystackEndPoints:Balance"]}"; 
             var result = await _requestClient.GetRequestAsync<BalanceResponseModel>(url);
             return result;
         }
@@ -39,7 +39,7 @@ namespace PayBakery.Proxy
         public async Task<BankListResponseModel> GetBanks()
         {
 
-            string url = $"{_configuration["PaystackEndPoints:ListBanks"]}";
+            string url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + $"{_configuration["PaystackEndPoints:ListBanks"]}";
             var result = await _requestClient.GetRequestAsync<BankListResponseModel>(url);
             return result;
 
@@ -49,9 +49,9 @@ namespace PayBakery.Proxy
         //This methods verify account number using account number and bank code
         public async Task<AccountDetailsResponseModel> ResolveAccount(string account_number, string bank_code)
         {
-            var url = string.Format($"{_configuration["PaystackEndPoints:ResolveAccountNumber"]}", account_number, bank_code);
-            
+            var Formaturl = string.Format($"{_configuration["PaystackEndPoints:ResolveAccountNumber"]}", account_number, bank_code);
 
+            var url = $"{_configuration["PaystackEndPoints:baseUrl"]}" + Formaturl;
             var result = await _requestClient.GetRequestAsync<AccountDetailsResponseModel>(url);
             return result;
         }
